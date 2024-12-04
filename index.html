@@ -19,13 +19,15 @@
           </div>
            <!-- Hamburger Menu (Visible below 768px) -->
           <div class="hamburger" onclick="toggleMenu()">&#9776;</div> <!-- Hamburger icon -->
+        
           <nav>
               <ul class="nav-links">
-                  <li><a href="about" data-number="01.">About</a></li>
+                  <li><a href="#about" data-number="01.">About</a></li>
                   <li><a href="https://blogsmanish.hashnode.dev/" data-number="02." target="_blank ">Blogs</a></li>
                   <li><a href="https://manishpoems.hashnode.dev/" data-number="03." target="_blank ">Poems</a></li>
-                  <li><a href="contact" data-number="04.">Contact</a></li>
+                  <li><a href="#contact" data-number="04.">Contact</a></li>
                   <li> <a href="images/cv.pdf" target="_blank" class="button">Resume</a></li>
+                  <div class="close-btn" onclick="toggleMenu()" title="Click to close menu" >&times;</div>
               </ul>
           </nav> 
       </div>
@@ -153,9 +155,15 @@
 
 
       function toggleMenu() {
-          document.querySelector('.hamburger').classList.toggle('active');
-          document.querySelector('.nav-links').classList.toggle('active');
-      }
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    const closeBtn = document.querySelector('.close-btn');
+
+    // Toggle active class on hamburger and nav links
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('active');
+    navLinks.classList.toggle('open');
+}
 
           // Form submit
     function sendEmail(event) {

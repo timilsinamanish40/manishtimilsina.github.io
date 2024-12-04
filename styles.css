@@ -380,20 +380,41 @@ nav {
     color: var(--bg-color);
     outline: none;
 }
-/* Hamburger Menu */
+/* General Hamburger Menu Styling */
 .hamburger {
     display: none;
     cursor: pointer;
     font-size: 2rem;
     color: var(--primary-color);
+    z-index: 1001;
 }
 
+/* Close button styling */
+.close-btn {
+    display: none; /* Hide the close button by default */
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+    z-index: 1000; /* Ensure it's above other elements */
+}
+
+/* Display hamburger when active */
 .hamburger.active {
     display: block;
 }
 
+/* Display close button and nav items when the menu is open */
 .nav-links.active {
     display: flex;
+    right: 0; /* Slide the menu into view */
+}
+
+/* Show the close button when the menu is open */
+.nav-links.open .close-btn {
+    display: block;
 }
 
 
@@ -416,35 +437,52 @@ nav {
     .header-content {
         display: flex;
         justify-content: space-between;
-        
     }
 
+    /* Menu styling */
     .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 250px;
+        height: 100vh;
+        background-color: var(--bg-color);
+        display: flex;
         flex-direction: column;
-        margin-top: 20px;
-        display: none; /* Hide by default */
+        justify-content: center;
+        align-items: center;
+        transition: right 0.3s ease; /* Smooth sliding transition */
     }
 
+    /* Nav links styling */
+    .nav-links li {
+        margin: 10px 0;
+        align-self: flex-start;
+        padding-left: 4rem;
+    }
     .nav-links li a {
         font-size: 1rem;
         padding: 10px;
     }
-    .hamburger.active {
-        display: block;
-    }
 
-    /* Hamburger Menu */
+    /* Show hamburger when not active */
     .hamburger {
         display: block;
-        cursor: pointer;
-        font-size: 2rem;
-        color: var(--primary-color);
     }
 
+    /* When hamburger is active, display the nav links */
     .hamburger.active + .nav-links {
         display: flex;
-        align-items: flex-end;
-        margin-top: 10px;
+        right: 0; /* Slide the menu into view */
+    }
+
+    /* Close button when the menu is open */
+    .close-btn {
+        display: block;
+        position: absolute;
+        top: 200px;
+        right: 200px;
+        
     }
 
     .logo img {
@@ -486,11 +524,9 @@ nav {
         width: 100%;
         max-width: 100%;
     }
-  
 }
 
-
-
+/* For very small screens (up to 480px) */
 @media (max-width: 480px) {
     .intro h2 {
         font-size: 2rem;
@@ -508,6 +544,7 @@ nav {
     .social-left, .social-right {
        display: none;
     }
+
     .calendar {
         padding: 10px;
         margin: 0 5px;     /* Reduced margin on very small screens */
@@ -522,4 +559,3 @@ nav {
         max-width: 100%;   
     }
 }
-
